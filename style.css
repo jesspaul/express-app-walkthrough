@@ -2,11 +2,41 @@ body {
     font-family: Helvetica;
 }
 
-.location {
-    font-size: 14px;
+p.section, .section::marker {
+    font-size: 20px;
+}
+
+.direction {
     margin-bottom: 5px;
 }
 
+.location {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
 code {
-    padding-left: 15px;
+    background-color: #f5f5f5;
+}
+
+.code {
+    margin-left: 20px;
+}
+
+.code-line {
+    padding: 0 15px;
+}
+
+p.code-line {
+    margin: 2px;
+}
+
+.tabbed {
+    padding-left: 30px;
+}
+
+.note {
+    font-size: 14px;
+    margin-top: 5px;
+    color: #656565;
 }
