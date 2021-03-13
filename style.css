@@ -1,3 +1,12 @@
 body {
     font-family: Helvetica;
 }
+
+.location {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+code {
+    padding-left: 15px;
+}

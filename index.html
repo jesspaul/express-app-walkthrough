@@ -14,13 +14,145 @@
 <body>
     <header>
         <h1>Express App Walkthrough</h1>
-        <p>A step by step look at creating an app with Express.</p>
+        <p>A step by step look at creating a simple CRUD todo app with Express.</p>
     </header>
     <main>
         <ol>
             <li>
-                <p class="direction">Create project folder</p>
-                <p class="code">In terminal: <code>mkdir express-app</code></p>
+                <p class="direction">Set up file structure</p>
+                <ol>
+                    <li>
+                        <p class="direction">Create project folder</p>
+                        <div class="code">
+                            <p class="location">In terminal: </p>
+                            <code>mkdir express-todo-app</code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Create server.js file</p>
+                        <div class="code">
+                            <p class="location">In terminal in project folder: </p>
+                            <code>touch server.js</code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Initialize npm with defaults</p>
+                        <div class="code">
+                            <p class="location">In terminal: </p>
+                            <code>npm init -y</code>
+                            <p class="note">This creates <code>package.json</code></p>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Install npm packages</p>
+                        <div class="code">
+                            <p class="location">In terminal: </p>
+                            <code>npm i express ejs morgan method-override</code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Setup MVC folder structure</p>
+                        <div class="code">
+                            <p class="location">In terminal: </p>
+                            <code>mkdir models views controllers routes</code>
+                        </div>
+                    </li>
+                </ol>
+            </li>
+
+            <li>
+                <p class="direction">Set up the server</p>
+                <ol>
+                    <li>
+                        <p class="direction">Open folder in VS Code</p>
+                        <div class="code">
+                            <p class="location">In terminal: </p>
+                            <code>code .</code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Load in express</p>
+                        <div class="code">
+                            <p class="location">In server.js: </p>
+                            <code>const express = require('express');</code><br>
+                            <code>const app = express();</code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Set the view engine</p>
+                        <div class="code">
+                            <p class="location">In server.js: </p>
+                            <code>app.set('view engine', 'ejs');</code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Mount middleware</p>
+                        <div class="code">
+                            <p class="location">In server.js: </p>
+                            <code>app.use(morgan('dev'));</code><br>
+                            <code>app.use(express.static('public'));</code><br>
+                            <code>app.use(express.urlencoded({ extended: false }));</code><br>
+                            <code>app.use(methodOverride('_method'));</code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Listen on a port</p>
+                        <div class="code">
+                            <p class="location">In server.js: </p>
+                            <code>app.listen(3000, function() {</code><br>
+                                <code>&emsp;&emsp;console.log('Express is listening on port 3000');</code><br>
+                            <code>});</code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Start the app</p>
+                        <div class="code">
+                            <p class="location">In terminal: </p>
+                            <code>nodemon</code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">View the app</p>
+                        <div class="code">
+                            <p class="location">In the browser: </p>
+                            <code>localhost:3000</code>
+                        </div>
+                    </li>
+                </ol>
+            </li>
+            
+            <li>
+                <p class="direction"></p>
+                <ol>
+                    <li>
+                        <p class="direction"></p>
+                        <div class="code">
+                            <p class="location"></p>
+                            <code></code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction"></p>
+                        <div class="code">
+                            <p class="location"></p>
+                            <code></code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction"></p>
+                        <div class="code">
+                            <p class="location"></p>
+                            <code></code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction"></p>
+                        <div class="code">
+                            <p class="location"></p>
+                            <code></code>
+                        </div>
+                    </li>
+                </ol>
             </li>
         </ol>
     </main>
