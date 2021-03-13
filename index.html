@@ -18,28 +18,28 @@
     </header>
     <main>
         <ol>
-            <li>
-                <p class="direction">Set up file structure</p>
+            <li class="section">
+                <p class="section direction">Set up file structure</p>
                 <ol>
                     <li>
                         <p class="direction">Create project folder</p>
                         <div class="code">
                             <p class="location">In terminal: </p>
-                            <code>mkdir express-todo-app</code>
+                            <code class="code-line">mkdir express-todo-app</code>
                         </div>
                     </li>
                     <li>
                         <p class="direction">Create server.js file</p>
                         <div class="code">
                             <p class="location">In terminal in project folder: </p>
-                            <code>touch server.js</code>
+                            <code class="code-line">touch server.js</code>
                         </div>
                     </li>
                     <li>
                         <p class="direction">Initialize npm with defaults</p>
                         <div class="code">
                             <p class="location">In terminal: </p>
-                            <code>npm init -y</code>
+                            <code class="code-line">npm init -y</code>
                             <p class="note">This creates <code>package.json</code></p>
                         </div>
                     </li>
@@ -47,109 +47,181 @@
                         <p class="direction">Install npm packages</p>
                         <div class="code">
                             <p class="location">In terminal: </p>
-                            <code>npm i express ejs morgan method-override</code>
+                            <code class="code-line">npm i express ejs morgan method-override</code>
                         </div>
                     </li>
                     <li>
                         <p class="direction">Setup MVC folder structure</p>
                         <div class="code">
                             <p class="location">In terminal: </p>
-                            <code>mkdir models views controllers routes</code>
+                            <code class="code-line">mkdir models views controllers routes</code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Create initial files</p>
+                        <div class="code">
+                            <p class="location">In terminal: </p>
+                            <code class="code-line">touch views/index.ejs routes/index.js</code>
                         </div>
                     </li>
                 </ol>
             </li>
 
-            <li>
-                <p class="direction">Set up the server</p>
+            <li class="section">
+                <p class="section direction">Set up the server</p>
                 <ol>
                     <li>
                         <p class="direction">Open folder in VS Code</p>
                         <div class="code">
                             <p class="location">In terminal: </p>
-                            <code>code .</code>
+                            <code class="code-line">code .</code>
                         </div>
                     </li>
                     <li>
                         <p class="direction">Load in express</p>
                         <div class="code">
                             <p class="location">In server.js: </p>
-                            <code>const express = require('express');</code><br>
-                            <code>const app = express();</code>
+                            <code class="code-line">const express = require('express');</code><br>
+                            <code class="code-line">const app = express();</code>
                         </div>
                     </li>
                     <li>
                         <p class="direction">Set the view engine</p>
                         <div class="code">
                             <p class="location">In server.js: </p>
-                            <code>app.set('view engine', 'ejs');</code>
+                            <code class="code-line">app.set('view engine', 'ejs');</code>
                         </div>
                     </li>
                     <li>
                         <p class="direction">Mount middleware</p>
                         <div class="code">
                             <p class="location">In server.js: </p>
-                            <code>app.use(morgan('dev'));</code><br>
-                            <code>app.use(express.static('public'));</code><br>
-                            <code>app.use(express.urlencoded({ extended: false }));</code><br>
-                            <code>app.use(methodOverride('_method'));</code>
+                            <code class="code-line">app.use(morgan('dev'));</code><br>
+                            <code class="code-line">app.use(express.static('public'));</code><br>
+                            <code class="code-line">app.use(express.urlencoded({ extended: false }));</code><br>
+                            <code class="code-line">app.use(methodOverride('_method'));</code>
                         </div>
                     </li>
                     <li>
                         <p class="direction">Listen on a port</p>
                         <div class="code">
                             <p class="location">In server.js: </p>
-                            <code>app.listen(3000, function() {</code><br>
-                                <code>&emsp;&emsp;console.log('Express is listening on port 3000');</code><br>
-                            <code>});</code>
+                            <code class="code-line">app.listen(3000, function() {</code><br>
+                                <code class="code-line tabbed">console.log('Express is listening on port 3000');</code><br>
+                            <code class="code-line">});</code>
                         </div>
                     </li>
                     <li>
                         <p class="direction">Start the app</p>
                         <div class="code">
                             <p class="location">In terminal: </p>
-                            <code>nodemon</code>
+                            <code class="code-line">nodemon</code>
                         </div>
                     </li>
                     <li>
                         <p class="direction">View the app</p>
                         <div class="code">
                             <p class="location">In the browser: </p>
-                            <code>localhost:3000</code>
+                            <code class="code-line">localhost:3000</code>
                         </div>
                     </li>
                 </ol>
             </li>
             
-            <li>
-                <p class="direction"></p>
+            <li class="section">
+                <p class="section direction">Set up the "database"</p>
                 <ol>
                     <li>
-                        <p class="direction"></p>
+                        <p class="direction">Create a file to act as the "database"</p>
                         <div class="code">
-                            <p class="location"></p>
-                            <code></code>
+                            <p class="location">In terminal: </p>
+                            <code class="code-line">touch models/todo.js</code>
+                            <p class="note">The file is written as singular by convention</p>
                         </div>
                     </li>
                     <li>
-                        <p class="direction"></p>
+                        <p class="direction">Create an array of todo objects</p>
                         <div class="code">
-                            <p class="location"></p>
-                            <code></code>
+                            <p class="location">In models/todo.js</p>
+                            <code class="code-line">const todos = [</code><br>
+                            <code class="code-line tabbed">{text: 'Feed Dogs', done: true},</code><br>
+                            <code class="code-line tabbed">{text: 'Learn Express', done: false},</code><br>
+                            <code class="code-line tabbed">{text: 'Buy Milk', done: false}</code><br>
+                            <code class="code-line">];</code>
                         </div>
                     </li>
                     <li>
-                        <p class="direction"></p>
+                        <p class="direction">Create methods to access one or all todo objects</p>
                         <div class="code">
-                            <p class="location"></p>
-                            <code></code>
+                            <p class="location">In models/todo.js: </p>
+                            <code class="code-line">function getAll() {</code><br>
+                            <code class="code-line tabbed">return todos;</code><br>
+                            <code class="code-line">};</code><br>
+                            <code class="code-line">function getOne(id) {</code><br>
+                            <code class="code-line tabbed">return todos[id];</code><br>
+                            <code class="code-line">};</code>
                         </div>
                     </li>
                     <li>
-                        <p class="direction"></p>
+                        <p class="direction">Export the methods</p>
                         <div class="code">
-                            <p class="location"></p>
-                            <code></code>
+                            <p class="location">In models/todo.js: </p>
+                            <code class="code-line">module.exports = {</code><br>
+                            <code class="code-line tabbed">getAll,</code><br>
+                            <code class="code-line tabbed">getOne,</code><br>
+                            <code class="code-line">};</code>
+                        </div>
+                    </li>
+                </ol>
+            </li>
+
+            <li class="section">
+                <p class="section direction">Set up home page</p>
+                <ol>
+                    <li>
+                        <p class="direction">Create home page</p>
+                        <div class="code">
+                            <p class="location">In index.ejs: </p>
+                            <p class="code-line">! for boilerplate HTML</p>
+                            <p class="code-line">Write HTML content in the body</p>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Load Express in index router</p>
+                        <div class="code">
+                            <p class="location">In routes/index.js: </p>
+                            <code class="code-line">const express = require('express');</code><br>
+                            <code class="code-line">const router = express.Router();</code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Create index router function</p>
+                        <div class="code">
+                            <p class="location">In routes/index.js: </p>
+                            <code class="code-line">router.get('/', function(req, res) {</code><br>
+                            <code class="code-line tabbed">res.render('index');</code><br>
+                            <code class="code-line">});</code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Export index router</p>
+                        <div class="code">
+                            <p class="location">In routes/index.js: </p>
+                            <code class="code-line">module.exports = router;</code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Load index router in server</p>
+                        <div class="code">
+                            <p class="location">In server.js: </p>
+                            <code class="code-line">const indexRouter = require('./routes/index');</code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Mount index route</p>
+                        <div class="code">
+                            <p class="location">In server.js: </p>
+                            <code class="code-line">app.use('/', indexRouter);</code>
                         </div>
                     </li>
                 </ol>
