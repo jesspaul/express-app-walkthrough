@@ -226,6 +226,112 @@
                     </li>
                 </ol>
             </li>
+            <li class="section">
+                <p class="section direction">Set up todos index</p>
+                <ol>
+                    <li>
+                        <p class="direction">Create folder and index file for todos</p>
+                        <div class="code">
+                            <p class="location">In terminal: </p>
+                            <code class="code-line">mkdir views/todos</code><br>
+                            <code class="code-line">touch views/todos/index.ejs</code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Write basic content for todos index</p>
+                        <div class="code">
+                            <p class="location">In views/todos/index.ejs: </p>
+                            <p class="code-line">! for boilerplate HTML</p>
+                            <p class="code-line">Write basic HTML content in the body</p>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Create todos controller</p>
+                        <div class="code">
+                            <p class="location">In terminal: </p>
+                            <code class="code-line">touch controllers/todos.js</code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Load model data</p>
+                        <div class="code">
+                            <p class="location">In controllers/todos.js: </p>
+                            <code class="code-line">const Todo = require('../models/todo');</code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Write function for todos index route</p>
+                        <div class="code">
+                            <p class="location">In controllers/todos.js: </p>
+                            <code class="code-line">function index(req, res) {</code><br>
+                            <code class="code-line tabbed">res.render('todos/index', {</code><br>
+                            <code class="code-line double-tabbed">todos: Todo.getAll(),</code><br>
+                            <code class="code-line tabbed">});</code><br>
+                            <code class="code-line">};</code><br>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Export todos index router function</p>
+                        <div class="code">
+                            <p class="location">In controllers/todos.js: </p>
+                            <code class="code-line">module.exports = {</code><br>
+                            <code class="code-line tabbed">index</code><br>
+                            <code class="code-line">};</code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Create todos router</p>
+                        <div class="code">
+                            <p class="location">In terminal: </p>
+                            <code class="code-line">touch routes/todos.js</code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Load Express in todos router</p>
+                        <div class="code">
+                            <p class="location">In routes/todos.js: </p>
+                            <code class="code-line">const express = require('express');</code><br>
+                            <code class="code-line">const router = express.Router();</code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Load controller function</p>
+                        <div class="code">
+                            <p class="location">In routes/todos.js: </p>
+                            <code class="code-line">const express = require('../controllers/todos');</code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Create todos index router</p>
+                        <div class="code">
+                            <p class="location">In routes/todos.js: </p>
+                            <code class="code-line">router.get('/', todosCtrl.index);</code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Export todos router</p>
+                        <div class="code">
+                            <p class="location">In routes/todos.js: </p>
+                            <code class="code-line">module.exports = router;</code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Load todo router in server</p>
+                        <div class="code">
+                            <p class="location">In server.js: </p>
+                            <code class="code-line">const todosRouter = require('./routes/todos');</code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Mount todo route</p>
+                        <div class="code">
+                            <p class="location">In server.js: </p>
+                            <code class="code-line">app.use('/todos', todosRouter);</code>
+                        </div>
+                    </li>
+                </ol>
+            </li>
+            
         </ol>
     </main>
 </body>
