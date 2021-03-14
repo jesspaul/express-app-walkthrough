@@ -46,7 +46,7 @@
                             <p class="location">In terminal: </p>
                             <div class="code-section">
                                 <code class="code-line">npm init -y</code>
-                                <p class="note">This creates <code>package.json</code></p>
+                                <p class="note">*Note: This creates <code>package.json</code></p>
                             </div>
                         </div>
                     </li>
@@ -65,15 +65,6 @@
                             <p class="location">In terminal: </p>
                             <div class="code-section">
                                 <code class="code-line">mkdir models views controllers routes</code>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="step">
-                        <p class="direction">Create initial files</p>
-                        <div class="code">
-                            <p class="location">In terminal: </p>
-                            <div class="code-section">
-                                <code class="code-line">touch views/index.ejs routes/index.js</code>
                             </div>
                         </div>
                     </li>
@@ -99,6 +90,16 @@
                             <div class="code-section">
                                 <code class="code-line">const express = require('express');</code><br>
                                 <code class="code-line">const app = express();</code>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="step">
+                        <p class="direction">Load in middleware</p>
+                        <div class="code">
+                            <p class="location">In server.js: </p>
+                            <div class="code-section">
+                                <code class="code-line">const morgan = require('morgan');</code><br>
+                                <code class="code-line">const methodOverride = require('method-override');</code>
                             </div>
                         </div>
                     </li>
@@ -149,6 +150,7 @@
                             <p class="location">In the browser: </p>
                             <div class="code-section">
                                 <code class="code-line">localhost:3000</code>
+                                <p class="note">*Note: The page will return a 404 error at this point.</p>
                             </div>
                         </div>
                     </li>
@@ -164,7 +166,7 @@
                             <p class="location">In terminal: </p>
                             <div class="code-section">
                                 <code class="code-line">touch models/todo.js</code>
-                                <p class="note">The file is written as singular by convention</p>
+                                <p class="note">*Note: The file is written as singular by convention</p>
                             </div>
                         </div>
                     </li>
@@ -214,6 +216,15 @@
                 <p class="section-direction">Set up home page</p>
                 <ol>
                     <li class="step">
+                        <p class="direction">Create index view and route file</p>
+                        <div class="code">
+                            <p class="location">In terminal: </p>
+                            <div class="code-section">
+                                <code class="code-line">touch views/index.ejs routes/index.js</code>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="step">
                         <p class="direction">Create home page</p>
                         <div class="code">
                             <p class="location">In index.ejs: </p>
@@ -234,13 +245,14 @@
                         </div>
                     </li>
                     <li class="step">
-                        <p class="direction">Create index router function</p>
+                        <p class="direction">Create index router</p>
                         <div class="code">
                             <p class="location">In routes/index.js: </p>
                             <div class="code-section">
                                 <code class="code-line">router.get('/', function(req, res) {</code><br>
                                 <code class="code-line tabbed">res.render('index');</code><br>
                                 <code class="code-line">});</code>
+                                <p class="note">*Note: res.render takes in a string of the ejs file name inside the views folder</p>
                             </div>
                         </div>
                     </li>
@@ -259,6 +271,7 @@
                             <p class="location">In server.js: </p>
                             <div class="code-section">
                                 <code class="code-line">const indexRouter = require('./routes/index');</code>
+                                <p class="note">*Note: File path must start with ./ for a local file</p>
                             </div>
                         </div>
                     </li>
@@ -268,6 +281,7 @@
                             <p class="location">In server.js: </p>
                             <div class="code-section">
                                 <code class="code-line">app.use('/', indexRouter);</code>
+                                <p class="note">*Note: localhost:3000 will now display the home page</p>
                             </div>
                         </div>
                     </li>
@@ -277,7 +291,7 @@
                 <p class="section-direction">Set up todos index</p>
                 <ol>
                     <li class="step">
-                        <p class="direction">Create folder and index file for todos</p>
+                        <p class="direction">Create folder and index file for todos view</p>
                         <div class="code">
                             <p class="location">In terminal: </p>
                             <div class="code-section">
@@ -297,49 +311,16 @@
                         </div>
                     </li>
                     <li class="step">
-                        <p class="direction">Create todos controller</p>
+                        <p class="direction">Link to the todos index from the home page</p>
                         <div class="code">
-                            <p class="location">In terminal: </p>
+                            <p class="location">In views/index.ejs: </p>
                             <div class="code-section">
-                                <code class="code-line">touch controllers/todos.js</code>
+                                <code class="code-line">&lt;a href="/todos">Todo List&lt;/a></code>
                             </div>
                         </div>
                     </li>
                     <li class="step">
-                        <p class="direction">Load model data</p>
-                        <div class="code">
-                            <p class="location">In controllers/todos.js: </p>
-                            <div class="code-section">
-                                <code class="code-line">const Todo = require('../models/todo');</code>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="step">
-                        <p class="direction">Write function for todos index route</p>
-                        <div class="code">
-                            <p class="location">In controllers/todos.js: </p>
-                            <div class="code-section">
-                                <code class="code-line">function index(req, res) {</code><br>
-                                <code class="code-line tabbed">res.render('todos/index', {</code><br>
-                                <code class="code-line double-tabbed">todos: Todo.getAll(),</code><br>
-                                <code class="code-line tabbed">});</code><br>
-                                <code class="code-line">};</code><br>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="step">
-                        <p class="direction">Export todos index router function</p>
-                        <div class="code">
-                            <p class="location">In controllers/todos.js: </p>
-                            <div class="code-section">
-                                <code class="code-line">module.exports = {</code><br>
-                                <code class="code-line tabbed">index</code><br>
-                                <code class="code-line">};</code>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="step">
-                        <p class="direction">Create todos router</p>
+                        <p class="direction">Create todos route file</p>
                         <div class="code">
                             <p class="location">In terminal: </p>
                             <div class="code-section">
@@ -358,20 +339,62 @@
                         </div>
                     </li>
                     <li class="step">
-                        <p class="direction">Load controller function</p>
-                        <div class="code">
-                            <p class="location">In routes/todos.js: </p>
-                            <div class="code-section">
-                                <code class="code-line">const express = require('../controllers/todos');</code>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="step">
-                        <p class="direction">Create todos index router</p>
+                        <p class="direction">Create todos get index route</p>
                         <div class="code">
                             <p class="location">In routes/todos.js: </p>
                             <div class="code-section">
                                 <code class="code-line">router.get('/', todosCtrl.index);</code>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="step">
+                        <p class="direction">Create todos controller file</p>
+                        <div class="code">
+                            <p class="location">In terminal: </p>
+                            <div class="code-section">
+                                <code class="code-line">touch controllers/todos.js</code>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="step">
+                        <p class="direction">Load model data in the controller</p>
+                        <div class="code">
+                            <p class="location">In controllers/todos.js: </p>
+                            <div class="code-section">
+                                <code class="code-line">const Todo = require('../models/todo');</code>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="step">
+                        <p class="direction">Write function to render todos index page with model data</p>
+                        <div class="code">
+                            <p class="location">In controllers/todos.js: </p>
+                            <div class="code-section">
+                                <code class="code-line">function index(req, res) {</code><br>
+                                <code class="code-line tabbed">res.render('todos/index', {</code><br>
+                                <code class="code-line double-tabbed">todos: Todo.getAll(),</code><br>
+                                <code class="code-line tabbed">});</code><br>
+                                <code class="code-line">};</code><br>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="step">
+                        <p class="direction">Export index function</p>
+                        <div class="code">
+                            <p class="location">In controllers/todos.js: </p>
+                            <div class="code-section">
+                                <code class="code-line">module.exports = {</code><br>
+                                <code class="code-line tabbed">index</code><br>
+                                <code class="code-line">};</code>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="step">
+                        <p class="direction">Load controller function in the router</p>
+                        <div class="code">
+                            <p class="location">In routes/todos.js: </p>
+                            <div class="code-section">
+                                <code class="code-line">const express = require('../controllers/todos');</code>
                             </div>
                         </div>
                     </li>
@@ -385,7 +408,7 @@
                         </div>
                     </li>
                     <li class="step">
-                        <p class="direction">Load todo router in server</p>
+                        <p class="direction">Load todos router in server</p>
                         <div class="code">
                             <p class="location">In server.js: </p>
                             <div class="code-section">
@@ -394,16 +417,17 @@
                         </div>
                     </li>
                     <li class="step">
-                        <p class="direction">Mount todo route</p>
+                        <p class="direction">Mount todos route</p>
                         <div class="code">
                             <p class="location">In server.js: </p>
                             <div class="code-section">
                                 <code class="code-line">app.use('/todos', todosRouter);</code>
+                                <p class="note">*Note: localhost:3000/todos will now display the todos index view</p>
                             </div>
                         </div>
                     </li>
                     <li class="step">
-                        <p class="direction">Load todos data in index view</p>
+                        <p class="direction">Programatically create list of todos data in index view</p>
                         <div class="code">
                             <p class="location">In views/todos/index.ejs:</p>
                             <div class="code-section">
@@ -423,7 +447,7 @@
                 <p class="section-direction">Set up the show functionality</p>
                 <ol>
                     <li class="step">
-                        <p class="direction">Add link to each todo item in the index view</p>
+                        <p class="direction">Add link to each todo item's id in the index view</p>
                         <div class="code">
                             <p class="location">In views/todos/index.ejs: </p>
                             <div class="code-section">
@@ -441,7 +465,7 @@
                         </div>
                     </li>
                     <li class="step">
-                        <p class="direction">Create the show controller function</p>
+                        <p class="direction">Create the show controller function with model data</p>
                         <div class="code">
                             <p class="location">In controllers/todos.js: </p>
                             <div class="code-section">
@@ -486,6 +510,7 @@
                                 <code class="code-line">&lt;h1>Todo #&lt;%= todoNum %>&lt;/h1></code><br>
                                 <code class="code-line">&lt;h3>&lt;%= todo.text %>&lt;/h3></code><br>
                                 <code class="code-line">&lt;h3>Complete: &lt;%= todo.done ? 'Yes' : 'No' %>&lt;/h3></code>
+                                <p class="note">*Note: localhost:3000/todos/:id will now display the todos show view</p>
                             </div>
                         </div>
                     </li>
@@ -495,20 +520,21 @@
                 <p class="section-direction">Add new todo</p>
                 <ol>
                     <li class="step">
-                        <p class="direction">Add a link to create a new todo</p>
+                        <p class="direction">Add a link in the todos index to create a new todo</p>
                         <div class="code">
                             <p class="location">In views/todos/index.ejs: </p>
                             <div class="code-section">
-                                <code class="code-line">&lt;a href="/todos/new">Add To-Do&lt;/a></code>
+                                <code class="code-line">&lt;a href="/todos/new">Add Todo&lt;/a></code>
                             </div>
                         </div>
                     </li>
                     <li class="step">
-                        <p class="direction">Add the route for a new todo</p>
+                        <p class="direction">Add the route for a page to add a new todo</p>
                         <div class="code">
                             <p class="location">In routes/todos.js: </p>
                             <div class="code-section">
                                 <code class="code-line">router.get('/new', todosCtrl.new);</code>
+                                <p class="note">*Note: This must be written above the get /:id route so /new is not read as an id</p>
                             </div>
                         </div>
                     </li>
@@ -520,6 +546,7 @@
                                 <code class="code-line">function newTodo(req, res) {</code><br>
                                 <code class="code-line tabbed">res.render('todos/new');</code><br>
                                 <code class="code-line">};</code>
+                                <p class="note">*Note: The user is creating the new todo, so we do not need to pass in any data to the page</p>
                             </div>
                         </div>
                     </li>
@@ -551,7 +578,7 @@
                             <div class="code-section">
                                 <p class="code-line">! for boilerplate HTML and add the following into the body: </p>
                                 <code class="code-line">&lt;h1>New Todo&lt;/h1></code><br>
-                                <code class="code-line">&lt;form action="/todos" method="POST">&lt;/form></code><br>
+                                <code class="code-line">&lt;form action="/todos" method="POST"></code><br>
                                 <code class="code-line tabbed">&lt;input type="text" name="text"></code><br>
                                 <code class="code-line tabbed">&lt;button type="submit">Save Todo&lt;/button></code><br>
                                 <code class="code-line">&lt;/form></code><br>
@@ -576,7 +603,10 @@
                                 <code class="code-line tabbed">req.body.done = false;</code><br>
                                 <code class="code-line tabbed">Todo.create(req.body);</code><br>
                                 <code class="code-line tabbed">res.redirect('/todos');</code><br>
-                                <code class="code-line">};</code><br>
+                                <code class="code-line">};</code>
+                                <p class="note">*Note: Initialize the done property to false</p>
+                                <p class="note tabbed">Add the new todo to the database - this method has not been created yet</p>
+                                <p class="note tabbed">Redirect the user to the todos index</p>
                             </div>
                         </div>
                     </li>
@@ -593,7 +623,7 @@
                         </div>
                     </li>
                     <li class="step">
-                        <p class="direction">Add the create function in the model</p>
+                        <p class="direction">Add the create method to the model</p>
                         <div class="code">
                             <p class="location">In models/todo.js: </p>
                             <div class="code-section">
@@ -604,7 +634,7 @@
                         </div>
                     </li>
                     <li class="step">
-                        <p class="direction">Export the create function</p>
+                        <p class="direction">Export the create method</p>
                         <div class="code">
                             <p class="location">In models/todo.js: </p>
                             <div class="code-section">
@@ -621,13 +651,15 @@
                 <p class="section-direction">Delete a todo</p>
                 <ol>
                     <li class="step">
-                        <p class="direction">Create a form for a delete button</p>
+                        <p class="direction">Create a form to use as a delete button before each todo in the index</p>
                         <div class="code">
                             <p class="location">In views/todos/index.ejs: </p>
                             <div class="code-section">
                                 <code class="code-line">&lt;form action="/todos/&lt;%= idx %>?_method=DELETE" method="post">&lt;/form></code><br>
                                 <code class="code-line tabbed">&lt;button type="submit">X&lt;/button></code><br>
                                 <code class="code-line">&lt;/form></code>
+                                <p class="note">*Note: Use method-override to change form method to delete</p>
+                                <p class="note tabbed">Optionally add CSS to display the form inline with the todo item</p>
                             </div>
                         </div>
                     </li>
@@ -665,7 +697,7 @@
                         </div>
                     </li>
                     <li class="step">
-                        <p class="direction">Add the delete function in the model</p>
+                        <p class="direction">Add the delete method to the model</p>
                         <div class="code">
                             <p class="location">In models/todo.js: </p>
                             <div class="code-section">
@@ -676,7 +708,7 @@
                         </div>
                     </li>
                     <li class="step">
-                        <p class="direction">Export the delete function from the model</p>
+                        <p class="direction">Export the delete method</p>
                         <div class="code">
                             <p class="location">In models/todo.js: </p>
                             <div class="code-section">
@@ -702,7 +734,7 @@
                         </div>
                     </li>
                     <li class="step">
-                        <p class="direction">Add the edit route</p>
+                        <p class="direction">Add the route for a page to edit the todo</p>
                         <div class="code">
                             <p class="location">In routes/todos.js: </p>
                             <div class="code-section">
@@ -761,6 +793,8 @@
                                 <code class="code-line tabbed">&lt;/label></code><br>
                                 <code class="code-line tabbed">&lt;button type="submit">Edit Todo&lt;/button></code><br>
                                 <code class="code-line">&lt;/form></code>
+                                <p class="note">*Note: Use method-override to change form method to put</p>
+                                <p class="note tabbed">Use value and checked input attributes to prefill information</p>
                             </div>
                         </div>
                     </li>
@@ -783,6 +817,9 @@
                                 <code class="code-line tabbed">Todo.updateOne(req.params.id, req.body);</code><br>
                                 <code class="code-line tabbed">res.redirect(`/todos/${req.params.id}`);</code><br>
                                 <code class="code-line">};</code>
+                                <p class="note">*Note: Set done property based on if checkbox is checked or not</p>
+                                <p class="note tabbed">Update the todo with it's id and new text - this method hasn't been created yet</p>
+                                <p class="note tabbed">Redirect the user to the show view</p>
                             </div>
                         </div>
                     </li>
@@ -799,7 +836,7 @@
                         </div>
                     </li>
                     <li class="step">
-                        <p class="direction">Add the update function to the model</p>
+                        <p class="direction">Add the update method to the model</p>
                         <div class="code">
                             <p class="location">In models/todo.js: </p>
                             <div class="code-section">
@@ -810,7 +847,7 @@
                         </div>
                     </li>
                     <li class="step">
-                        <p class="direction">Export the update function from the model</p>
+                        <p class="direction">Export the update method</p>
                         <div class="code">
                             <p class="location">In models/todo.js: </p>
                             <div class="code-section">
