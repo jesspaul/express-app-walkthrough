@@ -7,18 +7,15 @@ body {
     margin-left: 30px;
 }
 
-p.section, .section::marker {
+.section-direction, .section::marker {
     font-size: 20px;
+    margin: 2px 0;
 }
 
 .direction {
     display: inline-block;
     margin: 2px 0;
     padding: 2px 20px 2px 5px;
-}
-
-.section>.direction {
-    background-color: inherit;
 }
 
 .direction:hover {
@@ -62,4 +59,22 @@ p.code-line {
     margin-top: 5px;
     margin-bottom: 2px;
     color: #656565;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    right: 18px;
+    /* display: flex; */
+}
+
+.toggle-link {
+    display: inline;
+    font-size: 14px;
+    cursor: pointer;
+    color: darkcyan;
+}
+
+.fa {
+    color: darkcyan;
 }
