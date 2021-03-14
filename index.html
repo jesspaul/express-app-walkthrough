@@ -21,47 +21,59 @@
             <li class="section">
                 <p class="section direction">Set up file structure</p>
                 <ol>
-                    <li>
+                    <li class="step">
                         <p class="direction">Create project folder</p>
                         <div class="code">
                             <p class="location">In terminal: </p>
-                            <code class="code-line">mkdir express-todo-app</code>
+                            <div class="code-section">
+                                <code class="code-line">mkdir express-todo-app</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Create server.js file</p>
                         <div class="code">
                             <p class="location">In terminal in project folder: </p>
-                            <code class="code-line">touch server.js</code>
+                            <div class="code-section">
+                                <code class="code-line">touch server.js</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Initialize npm with defaults</p>
                         <div class="code">
                             <p class="location">In terminal: </p>
-                            <code class="code-line">npm init -y</code>
-                            <p class="note">This creates <code>package.json</code></p>
+                            <div class="code-section">
+                                <code class="code-line">npm init -y</code>
+                                <p class="note">This creates <code>package.json</code></p>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Install npm packages</p>
                         <div class="code">
                             <p class="location">In terminal: </p>
-                            <code class="code-line">npm i express ejs morgan method-override</code>
+                            <div class="code-section">
+                                <code class="code-line">npm i express ejs morgan method-override</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Setup MVC folder structure</p>
                         <div class="code">
                             <p class="location">In terminal: </p>
-                            <code class="code-line">mkdir models views controllers routes</code>
+                            <div class="code-section">
+                                <code class="code-line">mkdir models views controllers routes</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Create initial files</p>
                         <div class="code">
                             <p class="location">In terminal: </p>
-                            <code class="code-line">touch views/index.ejs routes/index.js</code>
+                            <div class="code-section">
+                                <code class="code-line">touch views/index.ejs routes/index.js</code>
+                            </div>
                         </div>
                     </li>
                 </ol>
@@ -70,59 +82,73 @@
             <li class="section">
                 <p class="section direction">Set up the server</p>
                 <ol>
-                    <li>
+                    <li class="step">
                         <p class="direction">Open folder in VS Code</p>
                         <div class="code">
                             <p class="location">In terminal: </p>
-                            <code class="code-line">code .</code>
+                            <div class="code-section">
+                                <code class="code-line">code .</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Load in express</p>
                         <div class="code">
                             <p class="location">In server.js: </p>
-                            <code class="code-line">const express = require('express');</code><br>
-                            <code class="code-line">const app = express();</code>
+                            <div class="code-section">
+                                <code class="code-line">const express = require('express');</code><br>
+                                <code class="code-line">const app = express();</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Set the view engine</p>
                         <div class="code">
                             <p class="location">In server.js: </p>
-                            <code class="code-line">app.set('view engine', 'ejs');</code>
+                            <div class="code-section">
+                                <code class="code-line">app.set('view engine', 'ejs');</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Mount middleware</p>
                         <div class="code">
                             <p class="location">In server.js: </p>
-                            <code class="code-line">app.use(morgan('dev'));</code><br>
-                            <code class="code-line">app.use(express.static('public'));</code><br>
-                            <code class="code-line">app.use(express.urlencoded({ extended: false }));</code><br>
-                            <code class="code-line">app.use(methodOverride('_method'));</code>
+                            <div class="code-section">
+                                <code class="code-line">app.use(morgan('dev'));</code><br>
+                                <code class="code-line">app.use(express.static('public'));</code><br>
+                                <code class="code-line">app.use(express.urlencoded({ extended: false }));</code><br>
+                                <code class="code-line">app.use(methodOverride('_method'));</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Listen on a port</p>
                         <div class="code">
                             <p class="location">In server.js: </p>
-                            <code class="code-line">app.listen(3000, function() {</code><br>
-                                <code class="code-line tabbed">console.log('Express is listening on port 3000');</code><br>
-                            <code class="code-line">});</code>
+                            <div class="code-section">
+                                <code class="code-line">app.listen(3000, function() {</code><br>
+                                    <code class="code-line tabbed">console.log('Express is listening on port 3000');</code><br>
+                                <code class="code-line">});</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Start the app</p>
                         <div class="code">
                             <p class="location">In terminal: </p>
-                            <code class="code-line">nodemon</code>
+                            <div class="code-section">
+                                <code class="code-line">nodemon</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">View the app</p>
                         <div class="code">
                             <p class="location">In the browser: </p>
-                            <code class="code-line">localhost:3000</code>
+                            <div class="code-section">
+                                <code class="code-line">localhost:3000</code>
+                            </div>
                         </div>
                     </li>
                 </ol>
@@ -131,45 +157,53 @@
             <li class="section">
                 <p class="section direction">Set up the "database"</p>
                 <ol>
-                    <li>
+                    <li class="step">
                         <p class="direction">Create a file to act as the "database"</p>
                         <div class="code">
                             <p class="location">In terminal: </p>
-                            <code class="code-line">touch models/todo.js</code>
-                            <p class="note">The file is written as singular by convention</p>
+                            <div class="code-section">
+                                <code class="code-line">touch models/todo.js</code>
+                                <p class="note">The file is written as singular by convention</p>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Create an array of todo objects</p>
                         <div class="code">
-                            <p class="location">In models/todo.js</p>
-                            <code class="code-line">const todos = [</code><br>
-                            <code class="code-line tabbed">{text: 'Feed Dogs', done: true},</code><br>
-                            <code class="code-line tabbed">{text: 'Learn Express', done: false},</code><br>
-                            <code class="code-line tabbed">{text: 'Buy Milk', done: false}</code><br>
-                            <code class="code-line">];</code>
+                            <p class="location">In models/todo.js: </p>
+                            <div class="code-section">
+                                <code class="code-line">const todos = [</code><br>
+                                <code class="code-line tabbed">{text: 'Feed Dogs', done: true},</code><br>
+                                <code class="code-line tabbed">{text: 'Learn Express', done: false},</code><br>
+                                <code class="code-line tabbed">{text: 'Buy Milk', done: false}</code><br>
+                                <code class="code-line">];</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Create methods to access one or all todo objects</p>
                         <div class="code">
                             <p class="location">In models/todo.js: </p>
-                            <code class="code-line">function getAll() {</code><br>
-                            <code class="code-line tabbed">return todos;</code><br>
-                            <code class="code-line">};</code><br>
-                            <code class="code-line">function getOne(id) {</code><br>
-                            <code class="code-line tabbed">return todos[id];</code><br>
-                            <code class="code-line">};</code>
+                            <div class="code-section">
+                                <code class="code-line">function getAll() {</code><br>
+                                <code class="code-line tabbed">return todos;</code><br>
+                                <code class="code-line">};</code><br>
+                                <code class="code-line">function getOne(id) {</code><br>
+                                <code class="code-line tabbed">return todos[id];</code><br>
+                                <code class="code-line">};</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Export the methods</p>
                         <div class="code">
                             <p class="location">In models/todo.js: </p>
-                            <code class="code-line">module.exports = {</code><br>
-                            <code class="code-line tabbed">getAll,</code><br>
-                            <code class="code-line tabbed">getOne,</code><br>
-                            <code class="code-line">};</code>
+                            <div class="code-section">
+                                <code class="code-line">module.exports = {</code><br>
+                                <code class="code-line tabbed">getAll,</code><br>
+                                <code class="code-line tabbed">getOne,</code><br>
+                                <code class="code-line">};</code>
+                            </div>
                         </div>
                     </li>
                 </ol>
@@ -178,50 +212,62 @@
             <li class="section">
                 <p class="section direction">Set up home page</p>
                 <ol>
-                    <li>
+                    <li class="step">
                         <p class="direction">Create home page</p>
                         <div class="code">
                             <p class="location">In index.ejs: </p>
-                            <p class="code-line">! for boilerplate HTML</p>
-                            <p class="code-line">Write HTML content in the body</p>
+                            <div class="code-section">
+                                <p class="code-line">! for boilerplate HTML</p>
+                                <p class="code-line">Write HTML content in the body</p>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Load Express in index router</p>
                         <div class="code">
                             <p class="location">In routes/index.js: </p>
-                            <code class="code-line">const express = require('express');</code><br>
-                            <code class="code-line">const router = express.Router();</code>
+                            <div class="code-section">
+                                <code class="code-line">const express = require('express');</code><br>
+                                <code class="code-line">const router = express.Router();</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Create index router function</p>
                         <div class="code">
                             <p class="location">In routes/index.js: </p>
-                            <code class="code-line">router.get('/', function(req, res) {</code><br>
-                            <code class="code-line tabbed">res.render('index');</code><br>
-                            <code class="code-line">});</code>
+                            <div class="code-section">
+                                <code class="code-line">router.get('/', function(req, res) {</code><br>
+                                <code class="code-line tabbed">res.render('index');</code><br>
+                                <code class="code-line">});</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Export index router</p>
                         <div class="code">
                             <p class="location">In routes/index.js: </p>
-                            <code class="code-line">module.exports = router;</code>
+                            <div class="code-section">
+                                <code class="code-line">module.exports = router;</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Load index router in server</p>
                         <div class="code">
                             <p class="location">In server.js: </p>
-                            <code class="code-line">const indexRouter = require('./routes/index');</code>
+                            <div class="code-section">
+                                <code class="code-line">const indexRouter = require('./routes/index');</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Mount index route</p>
                         <div class="code">
                             <p class="location">In server.js: </p>
-                            <code class="code-line">app.use('/', indexRouter);</code>
+                            <div class="code-section">
+                                <code class="code-line">app.use('/', indexRouter);</code>
+                            </div>
                         </div>
                     </li>
                 </ol>
@@ -229,117 +275,145 @@
             <li class="section">
                 <p class="section direction">Set up todos index</p>
                 <ol>
-                    <li>
+                    <li class="step">
                         <p class="direction">Create folder and index file for todos</p>
                         <div class="code">
                             <p class="location">In terminal: </p>
-                            <code class="code-line">mkdir views/todos</code><br>
-                            <code class="code-line">touch views/todos/index.ejs</code>
+                            <div class="code-section">
+                                <code class="code-line">mkdir views/todos</code><br>
+                                <code class="code-line">touch views/todos/index.ejs</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Write basic content for todos index</p>
                         <div class="code">
                             <p class="location">In views/todos/index.ejs: </p>
-                            <p class="code-line">! for boilerplate HTML</p>
-                            <p class="code-line">Write basic HTML content in the body</p>
+                            <div class="code-section">
+                                <p class="code-line">! for boilerplate HTML</p>
+                                <p class="code-line">Write basic HTML content in the body</p>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Create todos controller</p>
                         <div class="code">
                             <p class="location">In terminal: </p>
-                            <code class="code-line">touch controllers/todos.js</code>
+                            <div class="code-section">
+                                <code class="code-line">touch controllers/todos.js</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Load model data</p>
                         <div class="code">
                             <p class="location">In controllers/todos.js: </p>
-                            <code class="code-line">const Todo = require('../models/todo');</code>
+                            <div class="code-section">
+                                <code class="code-line">const Todo = require('../models/todo');</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Write function for todos index route</p>
                         <div class="code">
                             <p class="location">In controllers/todos.js: </p>
-                            <code class="code-line">function index(req, res) {</code><br>
-                            <code class="code-line tabbed">res.render('todos/index', {</code><br>
-                            <code class="code-line double-tabbed">todos: Todo.getAll(),</code><br>
-                            <code class="code-line tabbed">});</code><br>
-                            <code class="code-line">};</code><br>
+                            <div class="code-section">
+                                <code class="code-line">function index(req, res) {</code><br>
+                                <code class="code-line tabbed">res.render('todos/index', {</code><br>
+                                <code class="code-line double-tabbed">todos: Todo.getAll(),</code><br>
+                                <code class="code-line tabbed">});</code><br>
+                                <code class="code-line">};</code><br>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Export todos index router function</p>
                         <div class="code">
                             <p class="location">In controllers/todos.js: </p>
-                            <code class="code-line">module.exports = {</code><br>
-                            <code class="code-line tabbed">index</code><br>
-                            <code class="code-line">};</code>
+                            <div class="code-section">
+                                <code class="code-line">module.exports = {</code><br>
+                                <code class="code-line tabbed">index</code><br>
+                                <code class="code-line">};</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Create todos router</p>
                         <div class="code">
                             <p class="location">In terminal: </p>
-                            <code class="code-line">touch routes/todos.js</code>
+                            <div class="code-section">
+                                <code class="code-line">touch routes/todos.js</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Load Express in todos router</p>
                         <div class="code">
                             <p class="location">In routes/todos.js: </p>
-                            <code class="code-line">const express = require('express');</code><br>
-                            <code class="code-line">const router = express.Router();</code>
+                            <div class="code-section">
+                                <code class="code-line">const express = require('express');</code><br>
+                                <code class="code-line">const router = express.Router();</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Load controller function</p>
                         <div class="code">
                             <p class="location">In routes/todos.js: </p>
-                            <code class="code-line">const express = require('../controllers/todos');</code>
+                            <div class="code-section">
+                                <code class="code-line">const express = require('../controllers/todos');</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Create todos index router</p>
                         <div class="code">
                             <p class="location">In routes/todos.js: </p>
-                            <code class="code-line">router.get('/', todosCtrl.index);</code>
+                            <div class="code-section">
+                                <code class="code-line">router.get('/', todosCtrl.index);</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Export todos router</p>
                         <div class="code">
                             <p class="location">In routes/todos.js: </p>
-                            <code class="code-line">module.exports = router;</code>
+                            <div class="code-section">
+                                <code class="code-line">module.exports = router;</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Load todo router in server</p>
                         <div class="code">
                             <p class="location">In server.js: </p>
-                            <code class="code-line">const todosRouter = require('./routes/todos');</code>
+                            <div class="code-section">
+                                <code class="code-line">const todosRouter = require('./routes/todos');</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Mount todo route</p>
                         <div class="code">
                             <p class="location">In server.js: </p>
-                            <code class="code-line">app.use('/todos', todosRouter);</code>
+                            <div class="code-section">
+                                <code class="code-line">app.use('/todos', todosRouter);</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Load todos data in index view</p>
                         <div class="code">
                             <p class="location">In views/todos/index.ejs:</p>
-                            <code class="code-line">&lt;ul></code><br>
-                            <code class="code-line tabbed"><% todos.forEach(function(todo, idx) { %></code><br>
-                            <code class="code-line tabbed">&lt;li></code><br>
-                            <code class="code-line double-tabbed">&lt;%= todo.text %> : &lt;%= todo.done ? 'Done' : 'Not done' %></code><br>
-                            <code class="code-line tabbed">&lt;/li></code><br>
-                            <code class="code-line">&lt;% }); %></code><br>
-                            <code class="code-line">&lt;/ul></code>
+                            <div class="code-section">
+                                <code class="code-line">&lt;ul></code><br>
+                                <code class="code-line tabbed"><% todos.forEach(function(todo, idx) { %></code><br>
+                                <code class="code-line tabbed">&lt;li></code><br>
+                                <code class="code-line double-tabbed">&lt;%= todo.text %> : &lt;%= todo.done ? 'Done' : 'Not done' %></code><br>
+                                <code class="code-line tabbed">&lt;/li></code><br>
+                                <code class="code-line">&lt;% }); %></code><br>
+                                <code class="code-line">&lt;/ul></code>
+                            </div>
                         </div>
                     </li>
                 </ol>
@@ -347,59 +421,71 @@
             <li class="section">
                 <p class="section direction">Set up the show functionality</p>
                 <ol>
-                    <li>
+                    <li class="step">
                         <p class="direction">Add link to each todo item in the index view</p>
                         <div class="code">
                             <p class="location">In views/todos/index.ejs: </p>
-                            <code class="code-line">&lt;a href="/todos/&lt;%= idx %>">&lt;%= todo.text %>&lt;/a></code>
+                            <div class="code-section">
+                                <code class="code-line">&lt;a href="/todos/&lt;%= idx %>">&lt;%= todo.text %>&lt;/a></code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Add a show route</p>
                         <div class="code">
                             <p class="location">In routes/todos.js: </p>
-                            <code class="code-line">router.get('/:id', todosCtrl.show);</code>
+                            <div class="code-section">
+                                <code class="code-line">router.get('/:id', todosCtrl.show);</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Create the show controller function</p>
                         <div class="code">
                             <p class="location">In controllers/todos.js: </p>
-                            <code class="code-line">function show(req, res) {</code><br>
-                            <code class="code-line tabbed">res.render('todos/show', {</code><br>
-                            <code class="code-line double-tabbed">todo: Todo.getOne(req.params.id),</code><br>
-                            <code class="code-line double-tabbed">todoNum: parseInt(req.params.id) + 1</code><br>
-                            <code class="code-line tabbed">});</code><br>
-                            <code class="code-line">};</code><br>
+                            <div class="code-section">
+                                <code class="code-line">function show(req, res) {</code><br>
+                                <code class="code-line tabbed">res.render('todos/show', {</code><br>
+                                <code class="code-line double-tabbed">todo: Todo.getOne(req.params.id),</code><br>
+                                <code class="code-line double-tabbed">todoNum: parseInt(req.params.id) + 1</code><br>
+                                <code class="code-line tabbed">});</code><br>
+                                <code class="code-line">};</code><br>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Export the show function</p>
                         <div class="code">
                             <p class="location">In controllers/todos.js: </p>
-                            <code class="code-line">module.exports = {</code><br>
-                            <code class="code-line tabbed">index,</code><br>
-                            <code class="code-line tabbed">show</code><br>
-                            <code class="code-line">};</code>
+                            <div class="code-section">
+                                <code class="code-line">module.exports = {</code><br>
+                                <code class="code-line tabbed">index,</code><br>
+                                <code class="code-line tabbed">show</code><br>
+                                <code class="code-line">};</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Create the show view</p>
                         <div class="code">
                             <p class="location">In terminal: </p>
-                            <code class="code-line">touch views/todos/show.ejs</code>
+                            <div class="code-section">
+                                <code class="code-line">touch views/todos/show.ejs</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Write content for show view</p>
                         <div class="code">
                             <p class="location">In views/todos/show.ejs: </p>
-                            <p class="code-line">! for boilerplate HTML and add the following into the body: </p>
-                            <code class="code-line">&lt;a href="/">Home&lt;/a></code><br>
-                            <code class="code-line">&lt;a href="/todos">All Todos&lt;/a></code><br>
-                            <code class="code-line">&lt;h1>Todo #&lt;%= todoNum %>&lt;/h1></code><br>
-                            <code class="code-line">&lt;h3>&lt;%= todo.text %>&lt;/h3></code><br>
-                            <code class="code-line">&lt;h3>Complete: &lt;%= todo.done ? 'Yes' : 'No' %>&lt;/h3></code>
+                            <div class="code-section">
+                                <p class="code-line">! for boilerplate HTML and add the following into the body: </p>
+                                <code class="code-line">&lt;a href="/">Home&lt;/a></code><br>
+                                <code class="code-line">&lt;a href="/todos">All Todos&lt;/a></code><br>
+                                <code class="code-line">&lt;h1>Todo #&lt;%= todoNum %>&lt;/h1></code><br>
+                                <code class="code-line">&lt;h3>&lt;%= todo.text %>&lt;/h3></code><br>
+                                <code class="code-line">&lt;h3>Complete: &lt;%= todo.done ? 'Yes' : 'No' %>&lt;/h3></code>
+                            </div>
                         </div>
                     </li>
                 </ol>
@@ -407,103 +493,125 @@
             <li class="section">
                 <p class="section direction">Add new todo</p>
                 <ol>
-                    <li>
+                    <li class="step">
                         <p class="direction">Add a link to create a new todo</p>
                         <div class="code">
                             <p class="location">In views/todos/index.ejs: </p>
-                            <code class="code-line">&lt;a href="/todos/new">Add To-Do&lt;/a></code>
+                            <div class="code-section">
+                                <code class="code-line">&lt;a href="/todos/new">Add To-Do&lt;/a></code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Add the route for a new todo</p>
                         <div class="code">
                             <p class="location">In routes/todos.js: </p>
-                            <code class="code-line">router.get('/new', todosCtrl.new);</code>
+                            <div class="code-section">
+                                <code class="code-line">router.get('/new', todosCtrl.new);</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Add the controller function for a new todo</p>
                         <div class="code">
                             <p class="location">In controllers/todos.js: </p>
-                            <code class="code-line">function newTodo(req, res) {</code><br>
-                            <code class="code-line tabbed">res.render('todos/new');</code><br>
-                            <code class="code-line">};</code>
+                            <div class="code-section">
+                                <code class="code-line">function newTodo(req, res) {</code><br>
+                                <code class="code-line tabbed">res.render('todos/new');</code><br>
+                                <code class="code-line">};</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Export the new controller function</p>
                         <div class="code">
                             <p class="location">In controllers/todos.js: </p>
-                            <code class="code-line">module.exports = {</code><br>
-                            <code class="code-line tabbed">...</code><br>
-                            <code class="code-line tabbed">new: newTodo</code><br>
-                            <code class="code-line">};</code>
+                            <div class="code-section">
+                                <code class="code-line">module.exports = {</code><br>
+                                <code class="code-line tabbed">...</code><br>
+                                <code class="code-line tabbed">new: newTodo</code><br>
+                                <code class="code-line">};</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Create the new view</p>
                         <div class="code">
                             <p class="location">In terminal: </p>
-                            <code class="code-line">touch views/todos/new.ejs</code>
+                            <div class="code-section">
+                                <code class="code-line">touch views/todos/new.ejs</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Write content for new view</p>
                         <div class="code">
                             <p class="location">In views/todos/new.ejs: </p>
-                            <p class="code-line">! for boilerplate HTML and add the following into the body: </p>
-                            <code class="code-line">&lt;h1>New Todo&lt;/h1></code><br>
-                            <code class="code-line">&lt;form action="/todos" method="POST">&lt;/form></code><br>
-                            <code class="code-line tabbed">&lt;input type="text" name="text"></code><br>
-                            <code class="code-line tabbed">&lt;button type="submit">Save Todo&lt;/button></code><br>
-                            <code class="code-line">&lt;/form></code><br>
+                            <div class="code-section">
+                                <p class="code-line">! for boilerplate HTML and add the following into the body: </p>
+                                <code class="code-line">&lt;h1>New Todo&lt;/h1></code><br>
+                                <code class="code-line">&lt;form action="/todos" method="POST">&lt;/form></code><br>
+                                <code class="code-line tabbed">&lt;input type="text" name="text"></code><br>
+                                <code class="code-line tabbed">&lt;button type="submit">Save Todo&lt;/button></code><br>
+                                <code class="code-line">&lt;/form></code><br>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Add the create route</p>
                         <div class="code">
                             <p class="location">In routes/todos.js: </p>
-                            <code class="code-line">router.post('/', todosCtrl.create);</code>
+                            <div class="code-section">
+                                <code class="code-line">router.post('/', todosCtrl.create);</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Create the create controller function</p>
                         <div class="code">
                             <p class="location">In controllers/todos.js: </p>
-                            <code class="code-line">function create(req, res) {</code><br>
-                            <code class="code-line tabbed">req.body.done = false;</code><br>
-                            <code class="code-line tabbed">Todo.create(req.body);</code><br>
-                            <code class="code-line tabbed">res.redirect('/todos');</code><br>
-                            <code class="code-line">};</code><br>
+                            <div class="code-section">
+                                <code class="code-line">function create(req, res) {</code><br>
+                                <code class="code-line tabbed">req.body.done = false;</code><br>
+                                <code class="code-line tabbed">Todo.create(req.body);</code><br>
+                                <code class="code-line tabbed">res.redirect('/todos');</code><br>
+                                <code class="code-line">};</code><br>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Export the create controller function</p>
                         <div class="code">
                             <p class="location">In controllers/todos.js: </p>
-                            <code class="code-line">module.exports = {</code><br>
-                            <code class="code-line tabbed">...</code><br>
-                            <code class="code-line tabbed">create</code><br>
-                            <code class="code-line">};</code>
+                            <div class="code-section">
+                                <code class="code-line">module.exports = {</code><br>
+                                <code class="code-line tabbed">...</code><br>
+                                <code class="code-line tabbed">create</code><br>
+                                <code class="code-line">};</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Add the create function in the model</p>
                         <div class="code">
                             <p class="location">In models/todo.js: </p>
-                            <code class="code-line">function create(todo) {</code><br>
+                            <div class="code-section">
+                                <code class="code-line">function create(todo) {</code><br>
                                 <code class="code-line tabbed">todos.push(todo);</code><br>
                                 <code class="code-line">};</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Export the create function</p>
                         <div class="code">
                             <p class="location">In models/todo.js: </p>
-                            <code class="code-line">module.exports = {</code><br>
-                            <code class="code-line tabbed">...</code><br>
-                            <code class="code-line tabbed">create</code><br>
-                            <code class="code-line">};</code>
+                            <div class="code-section">
+                                <code class="code-line">module.exports = {</code><br>
+                                <code class="code-line tabbed">...</code><br>
+                                <code class="code-line tabbed">create</code><br>
+                                <code class="code-line">};</code>
+                            </div>
                         </div>
                     </li>
                 </ol>
@@ -511,171 +619,205 @@
             <li class="section">
                 <p class="section direction">Delete a todo</p>
                 <ol>
-                    <li>
+                    <li class="step">
                         <p class="direction">Create a form for a delete button</p>
                         <div class="code">
                             <p class="location">In views/todos/index.ejs: </p>
-                            <code class="code-line">&lt;form action="/todos/&lt;%= idx %>?_method=DELETE" method="post">&lt;/form></code><br>
-                            <code class="code-line tabbed">&lt;button type="submit">X&lt;/button></code><br>
-                            <code class="code-line">&lt;/form></code>
+                            <div class="code-section">
+                                <code class="code-line">&lt;form action="/todos/&lt;%= idx %>?_method=DELETE" method="post">&lt;/form></code><br>
+                                <code class="code-line tabbed">&lt;button type="submit">X&lt;/button></code><br>
+                                <code class="code-line">&lt;/form></code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Add the delete route</p>
                         <div class="code">
                             <p class="location">In routes/todos.js: </p>
-                            <code class="code-line">router.delete('/:id', todosCtrl.delete);</code>
+                            <div class="code-section">
+                                <code class="code-line">router.delete('/:id', todosCtrl.delete);</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Create the delete controller function</p>
                         <div class="code">
                             <p class="location">In controllers/todos.js: </p>
-                            <code class="code-line">function deleteTodo(req, res) {</code><br>
-                            <code class="code-line tabbed">Todo.deleteOne(req.params.id);</code><br>
-                            <code class="code-line tabbed">res.redirect('/todos');</code><br>
-                            <code class="code-line">};</code>
+                            <div class="code-section">
+                                <code class="code-line">function deleteTodo(req, res) {</code><br>
+                                <code class="code-line tabbed">Todo.deleteOne(req.params.id);</code><br>
+                                <code class="code-line tabbed">res.redirect('/todos');</code><br>
+                                <code class="code-line">};</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Export the delete controller function</p>
                         <div class="code">
                             <p class="location">In controllers/todos.js: </p>
-                            <code class="code-line">module.exports = {</code><br>
-                            <code class="code-line tabbed">...</code><br>
-                            <code class="code-line tabbed">delete: deleteTodo</code><br>
-                            <code class="code-line">};</code>
+                            <div class="code-section">
+                                <code class="code-line">module.exports = {</code><br>
+                                <code class="code-line tabbed">...</code><br>
+                                <code class="code-line tabbed">delete: deleteTodo</code><br>
+                                <code class="code-line">};</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Add the delete function in the model</p>
                         <div class="code">
                             <p class="location">In models/todo.js: </p>
-                            <code class="code-line">function deleteOne(todo) {</code><br>
+                            <div class="code-section">
+                                <code class="code-line">function deleteOne(todo) {</code><br>
                                 <code class="code-line tabbed">todos.splice(id, 1);</code><br>
                                 <code class="code-line">};</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Export the delete function from the model</p>
                         <div class="code">
                             <p class="location">In models/todo.js: </p>
-                            <code class="code-line">module.exports = {</code><br>
-                            <code class="code-line tabbed">...</code><br>
-                            <code class="code-line tabbed">deleteOne</code><br>
-                            <code class="code-line">};</code>
+                            <div class="code-section">
+                                <code class="code-line">module.exports = {</code><br>
+                                <code class="code-line tabbed">...</code><br>
+                                <code class="code-line tabbed">deleteOne</code><br>
+                                <code class="code-line">};</code>
+                            </div>
                         </div>
                     </li>
                 </ol>
             </li>
             <li class="section">
-                <p class="sectiondirection">Edit a todo</p>
+                <p class="section direction">Edit a todo</p>
                 <ol>
-                    <li>
+                    <li class="step">
                         <p class="direction">Add a link to edit todo in show view</p>
                         <div class="code">
                             <p class="location">In views/todos/show.ejs: </p>
-                            <code class="code-line">&lt;a href="/todos/&lt;%= todoNum - 1 %>/edit">Edit This Todo&lt;/a></code>
+                            <div class="code-section">
+                                <code class="code-line">&lt;a href="/todos/&lt;%= todoNum - 1 %>/edit">Edit This Todo&lt;/a></code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Add the edit route</p>
                         <div class="code">
                             <p class="location">In routes/todos.js: </p>
-                            <code class="code-line">router.get('/:id/edit', todosCtrl.edit);</code>
+                            <div class="code-section">
+                                <code class="code-line">router.get('/:id/edit', todosCtrl.edit);</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Create the edit controller function</p>
                         <div class="code">
                             <p class="location">In controllers/todos.js: </p>
-                            <code class="code-line">function edit(req, res) {</code><br>
-                            <code class="code-line tabbed">const todo = Todo.getOne(req.params.id);</code><br>
-                            <code class="code-line tabbed">res.render('todos/edit', {</code><br>
-                            <code class="code-line double-tabbed">todo,</code><br>
-                            <code class="code-line double-tabbed">todoId: req.params.id,</code><br>
-                            <code class="code-line">};</code>
+                            <div class="code-section">
+                                <code class="code-line">function edit(req, res) {</code><br>
+                                <code class="code-line tabbed">const todo = Todo.getOne(req.params.id);</code><br>
+                                <code class="code-line tabbed">res.render('todos/edit', {</code><br>
+                                <code class="code-line double-tabbed">todo,</code><br>
+                                <code class="code-line double-tabbed">todoId: req.params.id,</code><br>
+                                <code class="code-line">};</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Export the edit controller function</p>
                         <div class="code">
                             <p class="location">In controllers/todos.js: </p>
-                            <code class="code-line">module.exports = {</code><br>
-                            <code class="code-line tabbed">...</code><br>
-                            <code class="code-line tabbed">edit</code><br>
-                            <code class="code-line">};</code>
+                            <div class="code-section">
+                                <code class="code-line">module.exports = {</code><br>
+                                <code class="code-line tabbed">...</code><br>
+                                <code class="code-line tabbed">edit</code><br>
+                                <code class="code-line">};</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Create the edit view</p>
                         <div class="code">
                             <p class="location">In terminal: </p>
-                            <code class="code-line">touch views/todos/edit.ejs: </code>
+                            <div class="code-section">
+                                <code class="code-line">touch views/todos/edit.ejs: </code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Write content for edit view</p>
                         <div class="code">
                             <p class="location">In views/todos/edit.ejs: </p>
-                            <p class="code-line">! for boilerplate HTML and add the following into the body: </p>
-                            <code class="code-line">&lt;h1>Edit Todo: &lt;%= todo.text %>&lt;/h1></code><br>
-                            <code class="code-line">&lt;form action="/todos/&lt;%= todoId %>/?_method=PUT" method="post">&lt;/form></code><br>
-                            <code class="code-line tabbed">&lt;label>Description:</code><br>
-                            <code class="code-line double-tabbed">&lt;input type="text" name="text" value="&lt;%= todo.text %>"></code><br>
-                            <code class="code-line tabbed">&lt;/label></code><br>
-                            <code class="code-line tabbed">&lt;label>Done:</code><br>
-                            <code class="code-line double-tabbed">&lt;input type="checkbox" name="done" &lt;%- todo.done ? 'checked' : ''%>></code><br>
-                            <code class="code-line tabbed">&lt;/label></code><br>
-                            <code class="code-line tabbed">&lt;button type="submit">Edit Todo&lt;/button></code><br>
-                            <code class="code-line">&lt;/form></code>
+                            <div class="code-section">
+                                <p class="code-line">! for boilerplate HTML and add the following into the body: </p>
+                                <code class="code-line">&lt;h1>Edit Todo: &lt;%= todo.text %>&lt;/h1></code><br>
+                                <code class="code-line">&lt;form action="/todos/&lt;%= todoId %>/?_method=PUT" method="post">&lt;/form></code><br>
+                                <code class="code-line tabbed">&lt;label>Description:</code><br>
+                                <code class="code-line double-tabbed">&lt;input type="text" name="text" value="&lt;%= todo.text %>"></code><br>
+                                <code class="code-line tabbed">&lt;/label></code><br>
+                                <code class="code-line tabbed">&lt;label>Done:</code><br>
+                                <code class="code-line double-tabbed">&lt;input type="checkbox" name="done" &lt;%- todo.done ? 'checked' : ''%>></code><br>
+                                <code class="code-line tabbed">&lt;/label></code><br>
+                                <code class="code-line tabbed">&lt;button type="submit">Edit Todo&lt;/button></code><br>
+                                <code class="code-line">&lt;/form></code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Add the put route</p>
                         <div class="code">
                             <p class="location">In routes/todos.js: </p>
-                            <code class="code-line">router.put('/:id', todosCtrl.update);</code>
+                            <div class="code-section">
+                                <code class="code-line">router.put('/:id', todosCtrl.update);</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Create the update controller function</p>
                         <div class="code">
                             <p class="location">In controllers/todos.js: </p>
-                            <code class="code-line">function update(req, res) {</code><br>
-                            <code class="code-line tabbed">req.body.done = req.body.done ? true : false;</code><br>
-                            <code class="code-line tabbed">Todo.updateOne(req.params.id, req.body);</code><br>
-                            <code class="code-line tabbed">res.redirect(`/todos/${req.params.id}`);</code><br>
-                            <code class="code-line">};</code>
+                            <div class="code-section">
+                                <code class="code-line">function update(req, res) {</code><br>
+                                <code class="code-line tabbed">req.body.done = req.body.done ? true : false;</code><br>
+                                <code class="code-line tabbed">Todo.updateOne(req.params.id, req.body);</code><br>
+                                <code class="code-line tabbed">res.redirect(`/todos/${req.params.id}`);</code><br>
+                                <code class="code-line">};</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Export the update controller function</p>
                         <div class="code">
                             <p class="location">In controllers/todos.js: </p>
-                            <code class="code-line">module.exports = {</code><br>
-                            <code class="code-line tabbed">...</code><br>
-                            <code class="code-line tabbed">update</code><br>
-                            <code class="code-line">};</code>
+                            <div class="code-section">
+                                <code class="code-line">module.exports = {</code><br>
+                                <code class="code-line tabbed">...</code><br>
+                                <code class="code-line tabbed">update</code><br>
+                                <code class="code-line">};</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Add the update function to the model</p>
                         <div class="code">
                             <p class="location">In models/todo.js: </p>
-                            <code class="code-line">function updateOne(id, updatedTodo) {</code><br>
+                            <div class="code-section">
+                                <code class="code-line">function updateOne(id, updatedTodo) {</code><br>
                                 <code class="code-line tabbed">todos.splice(id, 1, updatedTodo);</code><br>
                                 <code class="code-line">};</code>
+                            </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="step">
                         <p class="direction">Export the update function from the model</p>
                         <div class="code">
                             <p class="location">In models/todo.js: </p>
-                            <code class="code-line">module.exports = {</code><br>
-                            <code class="code-line tabbed">...</code><br>
-                            <code class="code-line tabbed">updateOne</code><br>
-                            <code class="code-line">};</code>
+                            <div class="code-section">
+                                <code class="code-line">module.exports = {</code><br>
+                                <code class="code-line tabbed">...</code><br>
+                                <code class="code-line tabbed">updateOne</code><br>
+                                <code class="code-line">};</code>
+                            </div>
                         </div>
                     </li>
                 </ol>
