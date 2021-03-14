@@ -568,6 +568,118 @@
                     </li>
                 </ol>
             </li>
+            <li class="section">
+                <p class="sectiondirection">Edit a todo</p>
+                <ol>
+                    <li>
+                        <p class="direction">Add a link to edit todo in show view</p>
+                        <div class="code">
+                            <p class="location">In views/todos/show.ejs: </p>
+                            <code class="code-line">&lt;a href="/todos/&lt;%= todoNum - 1 %>/edit">Edit This Todo&lt;/a></code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Add the edit route</p>
+                        <div class="code">
+                            <p class="location">In routes/todos.js: </p>
+                            <code class="code-line">router.get('/:id/edit', todosCtrl.edit);</code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Create the edit controller function</p>
+                        <div class="code">
+                            <p class="location">In controllers/todos.js: </p>
+                            <code class="code-line">function edit(req, res) {</code><br>
+                            <code class="code-line tabbed">const todo = Todo.getOne(req.params.id);</code><br>
+                            <code class="code-line tabbed">res.render('todos/edit', {</code><br>
+                            <code class="code-line double-tabbed">todo,</code><br>
+                            <code class="code-line double-tabbed">todoId: req.params.id,</code><br>
+                            <code class="code-line">};</code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Export the edit controller function</p>
+                        <div class="code">
+                            <p class="location">In controllers/todos.js: </p>
+                            <code class="code-line">module.exports = {</code><br>
+                            <code class="code-line tabbed">...</code><br>
+                            <code class="code-line tabbed">edit</code><br>
+                            <code class="code-line">};</code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Create the edit view</p>
+                        <div class="code">
+                            <p class="location">In terminal: </p>
+                            <code class="code-line">touch views/todos/edit.ejs: </code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Write content for edit view</p>
+                        <div class="code">
+                            <p class="location">In views/todos/edit.ejs: </p>
+                            <p class="code-line">! for boilerplate HTML and add the following into the body: </p>
+                            <code class="code-line">&lt;h1>Edit Todo: &lt;%= todo.text %>&lt;/h1></code><br>
+                            <code class="code-line">&lt;form action="/todos/&lt;%= todoId %>/?_method=PUT" method="post">&lt;/form></code><br>
+                            <code class="code-line tabbed">&lt;label>Description:</code><br>
+                            <code class="code-line double-tabbed">&lt;input type="text" name="text" value="&lt;%= todo.text %>"></code><br>
+                            <code class="code-line tabbed">&lt;/label></code><br>
+                            <code class="code-line tabbed">&lt;label>Done:</code><br>
+                            <code class="code-line double-tabbed">&lt;input type="checkbox" name="done" &lt;%- todo.done ? 'checked' : ''%>></code><br>
+                            <code class="code-line tabbed">&lt;/label></code><br>
+                            <code class="code-line tabbed">&lt;button type="submit">Edit Todo&lt;/button></code><br>
+                            <code class="code-line">&lt;/form></code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Add the put route</p>
+                        <div class="code">
+                            <p class="location">In routes/todos.js: </p>
+                            <code class="code-line">router.put('/:id', todosCtrl.update);</code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Create the update controller function</p>
+                        <div class="code">
+                            <p class="location">In controllers/todos.js: </p>
+                            <code class="code-line">function update(req, res) {</code><br>
+                            <code class="code-line tabbed">req.body.done = req.body.done ? true : false;</code><br>
+                            <code class="code-line tabbed">Todo.updateOne(req.params.id, req.body);</code><br>
+                            <code class="code-line tabbed">res.redirect(`/todos/${req.params.id}`);</code><br>
+                            <code class="code-line">};</code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Export the update controller function</p>
+                        <div class="code">
+                            <p class="location">In controllers/todos.js: </p>
+                            <code class="code-line">module.exports = {</code><br>
+                            <code class="code-line tabbed">...</code><br>
+                            <code class="code-line tabbed">update</code><br>
+                            <code class="code-line">};</code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Add the update function to the model</p>
+                        <div class="code">
+                            <p class="location">In models/todo.js: </p>
+                            <code class="code-line">function updateOne(id, updatedTodo) {</code><br>
+                                <code class="code-line tabbed">todos.splice(id, 1, updatedTodo);</code><br>
+                                <code class="code-line">};</code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Export the update function from the model</p>
+                        <div class="code">
+                            <p class="location">In models/todo.js: </p>
+                            <code class="code-line">module.exports = {</code><br>
+                            <code class="code-line tabbed">...</code><br>
+                            <code class="code-line tabbed">updateOne</code><br>
+                            <code class="code-line">};</code>
+                        </div>
+                    </li>
+                </ol>
+            </li>
         </ol>
     </main>
 </body>
