@@ -404,6 +404,114 @@
                     </li>
                 </ol>
             </li>
+            <li class="section">
+                <p class="section direction">Add new todo</p>
+                <ol>
+                    <li>
+                        <p class="direction">Add a link to create a new todo</p>
+                        <div class="code">
+                            <p class="location">In views/todos/index.ejs</p>
+                            <code class="code-line">&lt;a href="/todos/new">Add To-Do&lt;/a></code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Add the route for a new todo</p>
+                        <div class="code">
+                            <p class="location">In routes/todos.js</p>
+                            <code class="code-line">router.get('/new', todosCtrl.new);</code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Add the controller function for a new todo</p>
+                        <div class="code">
+                            <p class="location">In controllers/todos.js</p>
+                            <code class="code-line">function newTodo(req, res) {</code><br>
+                            <code class="code-line tabbed">res.render('todos/new');</code><br>
+                            <code class="code-line">};</code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Export the new controller function</p>
+                        <div class="code">
+                            <p class="location"></p>
+                            <code class="code-line">module.exports = {</code><br>
+                            <code class="code-line tabbed">...</code><br>
+                            <code class="code-line tabbed">new: newTodo</code><br>
+                            <code class="code-line">};</code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Create the new view</p>
+                        <div class="code">
+                            <p class="location">In terminal: </p>
+                            <code class="code-line">touch views/todos/new.ejs</code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Write content for new view</p>
+                        <div class="code">
+                            <p class="location">In views/todos/new.ejs</p>
+                            <p class="code-line">! for boilerplate HTML and add the following into the body: </p>
+                            <code class="code-line">&lt;h1>New Todo&lt;/h1></code><br>
+                            <code class="code-line">&lt;form action="/todos" method="POST">&lt;/form></code><br>
+                            <code class="code-line tabbed">&lt;input type="text" name="text"></code><br>
+                            <code class="code-line tabbed">&lt;button type="submit">Save Todo&lt;/button></code><br>
+                            <code class="code-line">&lt;/form></code><br>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Add the create route</p>
+                        <div class="code">
+                            <p class="location">In routes/todos.js</p>
+                            <code class="code-line">router.post('/', todosCtrl.create);</code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Create the create controller function</p>
+                        <div class="code">
+                            <p class="location">In controllers/todos.js</p>
+                            <code class="code-line">function create(req, res) {</code><br>
+                            <code class="code-line tabbed">req.body.done = false;</code><br>
+                            <code class="code-line tabbed">Todo.create(req.body);</code><br>
+                            <code class="code-line tabbed">res.redirect('/todos');</code><br>
+                            <code class="code-line">};</code><br>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Export the create controller function</p>
+                        <div class="code">
+                            <p class="location"></p>
+                            <code class="code-line">module.exports = {</code><br>
+                            <code class="code-line tabbed">...</code><br>
+                            <code class="code-line tabbed">create</code><br>
+                            <code class="code-line">};</code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction">Add the create function in the model</p>
+                        <div class="code">
+                            <p class="location">In models/todo.js</p>
+                            <code class="code-line">function create(todo) {</code><br>
+                                <code class="code-line tabbed">todos.push(todo);</code><br>
+                                <code class="code-line">};</code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction"></p>
+                        <div class="code">
+                            <p class="location"></p>
+                            <code class="code-line"></code>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="direction"></p>
+                        <div class="code">
+                            <p class="location"></p>
+                            <code class="code-line"></code>
+                        </div>
+                    </li>
+                </ol>
+            </li>
         </ol>
     </main>
 </body>
