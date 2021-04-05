@@ -862,6 +862,53 @@
             </li>
         </ol>
     </main>
+    <section>
+        <h2>Notes</h2>
+        <ul>
+            <li class='section-direction'>Node.js</li>
+            <ul>
+                <li class="info">A runtime environment for executing JavaScript outside of the browser</li>
+                <li class="info">Does not have a browser DOM or Web APIs</li>
+                <li class="info">Lightweight with functionality extended via packages</li>
+                <li class="info">Node Modules allow us to modularize and reuse code - every JS file is a module</li>
+                <li class="info">NPM (Node Package Manager) - modules that the app depends on are tracked in a package.json file</li>
+            </ul>
+            <li class='section-direction'>MVC Architecture</li>
+            <ul>
+                <li class="info">Models - database</li>
+                <li class="info">Views - templates seen in browser, can be a mix of static and dynamic code</li>
+                <li class="info">Routes - both HTTP method and path of the HTTP request</li>
+                <li class="info">Controllers - use Models to perform CRUD operations, implement other app logic, or pass data to views when a route is matched</li>
+            </ul>
+            <li class='section-direction'>Express Framework</li>
+            <ul>
+                <li class="info">Express is the most popular web framework for Node.js</li>
+                <li class="info">Web Application Frameworks have the ability to define routes, the ability to process HTTP requests using middleware, and the ability to use a view engine to render dynamic templates</li>
+                <li class="info">Nodemon is a popular development tool used for automatically restarting the Express app when we save changes</li>
+            </ul>
+            <li class='section-direction'>Flow for Adding Functionality</li>
+            <ul>
+                <li class="info">Identify the proper Route - verb and path</li>
+                <li class="info">Create the UI that issues a request that matches the route</li>
+                <li class="info">Define the route on the server and map it to a controller action</li>
+                <li class="info">Code and export the controller action</li>
+                <li class="info">Render a view or redirect if data was changed</li>
+            </ul>
+            <li class='section-direction'>MongoDB</li>
+            <ul>
+                <li class="info">NoSQL database that stores data in JavaScript objects</li>
+                <li class="info">A collection is a set of documents, documents are a set of data records</li>
+                <li class="info">MongoDB Atlas - MongoDB Cloud Hosting</li>
+            </ul>
+            <li class='section-direction'>Mongoose</li>
+            <ul>
+                <li class="info">An ODM (Object Document Mapper) maps object oriented JavaScript to MongoDB documents</li>
+                <li class="info">Mongoose makes it easier to perform CRUD using JavaScript instead of working directly with MongoDB</li>
+                <li class="info">Allows us to define schemas and ensures that documents conform to them</li>
+                <li class="info">Mongoose Schema compiles into a Mongoose Model which access MongoDB</li>
+            </ul>
+        </ul>
+    </section>
     <footer>
         <ul>
             <li class="toggle-link">
