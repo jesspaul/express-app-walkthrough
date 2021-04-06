@@ -59,6 +59,10 @@ p.code-line {
     padding-left: 45px;
 }
 
+.triple-tabbed {
+    padding-left: 60px;
+}
+
 .note {
     font-size: 14px;
     margin-top: 5px;

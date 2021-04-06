@@ -37,6 +37,7 @@
                             <p class="location">In terminal in project folder: </p>
                             <div class="code-section">
                                 <code class="code-line">touch server.js</code>
+                                <p class="note">*Note: Create this before initializing npm</p>
                             </div>
                         </div>
                     </li>
@@ -121,6 +122,7 @@
                                 <code class="code-line">app.use(express.static('public'));</code><br>
                                 <code class="code-line">app.use(express.urlencoded({ extended: false }));</code><br>
                                 <code class="code-line">app.use(methodOverride('_method'));</code>
+                                <p class="note">*Note: morgan - logs HTTP requests in the terminal, express.static - serves static assets such as css, js, and image files, express.urlencoded - parses data sent in the body of the request and populates a <code>req.body</code> object, method override - allows us to perform delete and update requests</p>
                             </div>
                         </div>
                     </li>
@@ -234,7 +236,7 @@
                         <div class="code">
                             <p class="location">In terminal: </p>
                             <div class="code-section">
-                                <code class="code-line">mkdir models</code>
+                                <code class="code-line">mkdir models</code><br>
                                 <code class="code-line">touch models/todo.js</code>
                             </div>
                         </div>
@@ -244,7 +246,7 @@
                         <div class="code">
                             <p class="location">In todo.js: </p>
                             <div class="code-section">
-                                <code class="code-line">const mongoose = require('mongoose');</code>
+                                <code class="code-line">const mongoose = require('mongoose');</code><br>
                                 <code class="code-line">const Schema = mongoose.Schema;</code>
                             </div>
                         </div>
@@ -254,9 +256,9 @@
                         <div class="code">
                             <p class="location">In todo.js: </p>
                             <div class="code-section">
-                                <code class="code-line">const todoSchema = new Schema({</code>
-                                <code class="code-line tabbed">text: String,</code>
-                                <code class="code-line tabbed">done: Boolean</code>
+                                <code class="code-line">const todoSchema = new Schema({</code><br>
+                                <code class="code-line tabbed">text: String,</code><br>
+                                <code class="code-line tabbed">done: Boolean</code><br>
                                 <code class="code-line">});</code>
                             </div>
                         </div>
@@ -432,8 +434,10 @@
                             <p class="location">In controllers/todos.js: </p>
                             <div class="code-section">
                                 <code class="code-line">function index(req, res) {</code><br>
-                                <code class="code-line tabbed">res.render('todos/index', {</code><br>
-                                <code class="code-line double-tabbed">todos: Todo.getAll(),</code><br>
+                                <code class="code-line tabbed">Todo.find({}, (error, todos) => {</code><br>
+                                <code class="code-line double-tabbed">res.render('todos/index', {</code><br>
+                                <code class="code-line triple-tabbed">todos</code><br>
+                                <code class="code-line double-tabbed">});</code><br>
                                 <code class="code-line tabbed">});</code><br>
                                 <code class="code-line">};</code><br>
                             </div>
@@ -531,9 +535,10 @@
                             <p class="location">In controllers/todos.js: </p>
                             <div class="code-section">
                                 <code class="code-line">function show(req, res) {</code><br>
-                                <code class="code-line tabbed">res.render('todos/show', {</code><br>
-                                <code class="code-line double-tabbed">todo: Todo.getOne(req.params.id),</code><br>
-                                <code class="code-line double-tabbed">todoNum: parseInt(req.params.id) + 1</code><br>
+                                <code class="code-line tabbed">Todo.findById(req.params.id, (err, foundTodo) => {</code><br>
+                                <code class="code-line double-tabbed">res.render('todos/show', {</code><br>
+                                <code class="code-line triple-tabbed">todo: foundTodo,</code><br>
+                                <code class="code-line double-tabbed">});</code><br>
                                 <code class="code-line tabbed">});</code><br>
                                 <code class="code-line">};</code><br>
                             </div>
@@ -568,7 +573,7 @@
                                 <p class="code-line">! for boilerplate HTML and add the following into the body: </p>
                                 <code class="code-line">&lt;a href="/">Home&lt;/a></code><br>
                                 <code class="code-line">&lt;a href="/todos">All Todos&lt;/a></code><br>
-                                <code class="code-line">&lt;h1>Todo #&lt;%= todoNum %>&lt;/h1></code><br>
+                                <code class="code-line">&lt;h1>Todo #&lt;%= todo._id %>&lt;/h1></code><br>
                                 <code class="code-line">&lt;h3>&lt;%= todo.text %>&lt;/h3></code><br>
                                 <code class="code-line">&lt;h3>Complete: &lt;%= todo.done ? 'Yes' : 'No' %>&lt;/h3></code>
                                 <p class="note">*Note: localhost:3000/todos/:id will now display the todos show view</p>
@@ -666,8 +671,6 @@
                                 <code class="code-line tabbed">res.redirect('/todos');</code><br>
                                 <code class="code-line">};</code>
                                 <p class="note">*Note: Initialize the done property to false</p>
-                                <p class="note tabbed">Add the new todo to the database - this method has not been created yet</p>
-                                <p class="note tabbed">Redirect the user to the todos index</p>
                             </div>
                         </div>
                     </li>
@@ -675,29 +678,6 @@
                         <p class="direction">Export the create controller function</p>
                         <div class="code">
                             <p class="location">In controllers/todos.js: </p>
-                            <div class="code-section">
-                                <code class="code-line">module.exports = {</code><br>
-                                <code class="code-line tabbed">...</code><br>
-                                <code class="code-line tabbed">create</code><br>
-                                <code class="code-line">};</code>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="step">
-                        <p class="direction">Add the create method to the model</p>
-                        <div class="code">
-                            <p class="location">In models/todo.js: </p>
-                            <div class="code-section">
-                                <code class="code-line">function create(todo) {</code><br>
-                                <code class="code-line tabbed">todos.push(todo);</code><br>
-                                <code class="code-line">};</code>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="step">
-                        <p class="direction">Export the create method</p>
-                        <div class="code">
-                            <p class="location">In models/todo.js: </p>
                             <div class="code-section">
                                 <code class="code-line">module.exports = {</code><br>
                                 <code class="code-line tabbed">...</code><br>
@@ -739,8 +719,9 @@
                             <p class="location">In controllers/todos.js: </p>
                             <div class="code-section">
                                 <code class="code-line">function deleteTodo(req, res) {</code><br>
-                                <code class="code-line tabbed">Todo.deleteOne(req.params.id);</code><br>
-                                <code class="code-line tabbed">res.redirect('/todos');</code><br>
+                                <code class="code-line tabbed">Todo.deleteOne({ _id: req.params.id }, function(err) {</code><br>
+                                <code class="code-line double-tabbed">res.redirect('/todos');</code><br>
+                                <code class="code-line tabbed">});</code>
                                 <code class="code-line">};</code>
                             </div>
                         </div>
@@ -757,29 +738,6 @@
                             </div>
                         </div>
                     </li>
-                    <li class="step">
-                        <p class="direction">Add the delete method to the model</p>
-                        <div class="code">
-                            <p class="location">In models/todo.js: </p>
-                            <div class="code-section">
-                                <code class="code-line">function deleteOne(todo) {</code><br>
-                                <code class="code-line tabbed">todos.splice(id, 1);</code><br>
-                                <code class="code-line">};</code>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="step">
-                        <p class="direction">Export the delete method</p>
-                        <div class="code">
-                            <p class="location">In models/todo.js: </p>
-                            <div class="code-section">
-                                <code class="code-line">module.exports = {</code><br>
-                                <code class="code-line tabbed">...</code><br>
-                                <code class="code-line tabbed">deleteOne</code><br>
-                                <code class="code-line">};</code>
-                            </div>
-                        </div>
-                    </li>
                 </ol>
             </li>
             <li class="section">
@@ -790,7 +748,7 @@
                         <div class="code">
                             <p class="location">In views/todos/show.ejs: </p>
                             <div class="code-section">
-                                <code class="code-line">&lt;a href="/todos/&lt;%= todoNum - 1 %>/edit">Edit This Todo&lt;/a></code>
+                                <code class="code-line">&lt;a href="/todos/&lt;%= todo._id %>/edit">Edit This Todo&lt;/a></code>
                             </div>
                         </div>
                     </li>
@@ -809,10 +767,11 @@
                             <p class="location">In controllers/todos.js: </p>
                             <div class="code-section">
                                 <code class="code-line">function edit(req, res) {</code><br>
-                                <code class="code-line tabbed">const todo = Todo.getOne(req.params.id);</code><br>
-                                <code class="code-line tabbed">res.render('todos/edit', {</code><br>
-                                <code class="code-line double-tabbed">todo,</code><br>
-                                <code class="code-line double-tabbed">todoId: req.params.id,</code><br>
+                                <code class="code-line tabbed">Todo.findById(req.params.id, function(err, foundTodo) {</code><br>
+                                <code class="code-line double-tabbed">res.render('todos/edit', {</code><br>
+                                <code class="code-line triple-tabbed">todo: foundTodo</code><br>
+                                <code class="code-line double-tabbed">});</code><br>
+                                <code class="code-line tabbed">});</code><br>
                                 <code class="code-line">};</code>
                             </div>
                         </div>
@@ -845,7 +804,7 @@
                             <div class="code-section">
                                 <p class="code-line">! for boilerplate HTML and add the following into the body: </p>
                                 <code class="code-line">&lt;h1>Edit Todo: &lt;%= todo.text %>&lt;/h1></code><br>
-                                <code class="code-line">&lt;form action="/todos/&lt;%= todoId %>/?_method=PUT" method="post">&lt;/form></code><br>
+                                <code class="code-line">&lt;form action="/todos/&lt;%= todo._id %>/?_method=PUT" method="post">&lt;/form></code><br>
                                 <code class="code-line tabbed">&lt;label>Description:</code><br>
                                 <code class="code-line double-tabbed">&lt;input type="text" name="text" value="&lt;%= todo.text %>"></code><br>
                                 <code class="code-line tabbed">&lt;/label></code><br>
@@ -874,13 +833,15 @@
                             <p class="location">In controllers/todos.js: </p>
                             <div class="code-section">
                                 <code class="code-line">function update(req, res) {</code><br>
-                                <code class="code-line tabbed">req.body.done = req.body.done ? true : false;</code><br>
-                                <code class="code-line tabbed">Todo.updateOne(req.params.id, req.body);</code><br>
-                                <code class="code-line tabbed">res.redirect(`/todos/${req.params.id}`);</code><br>
+                                <code class="code-line tabbed">Todo.findById(req.params.id, function(err, foundTodo) {</code><br>
+                                <code class="code-line double-tabbed">req.body.done = req.body.done ? true : false;</code><br>
+                                <code class="code-line double-tabbed">foundTodo.set(req.body);</code><br>
+                                <code class="code-line double-tabbed">foundTodo.save(function(err, savedTodo) {</code><br>
+                                <code class="code-line triple-tabbed">res.redirect(`/todos/${savedTodo._id}`);</code><br>
+                                <code class="code-line double-tabbed">});</code><br>
+                                <code class="code-line tabbed">});</code><br>
                                 <code class="code-line">};</code>
                                 <p class="note">*Note: Set done property based on if checkbox is checked or not</p>
-                                <p class="note tabbed">Update the todo with it's id and new text - this method hasn't been created yet</p>
-                                <p class="note tabbed">Redirect the user to the show view</p>
                             </div>
                         </div>
                     </li>
@@ -892,29 +853,6 @@
                                 <code class="code-line">module.exports = {</code><br>
                                 <code class="code-line tabbed">...</code><br>
                                 <code class="code-line tabbed">update</code><br>
-                                <code class="code-line">};</code>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="step">
-                        <p class="direction">Add the update method to the model</p>
-                        <div class="code">
-                            <p class="location">In models/todo.js: </p>
-                            <div class="code-section">
-                                <code class="code-line">function updateOne(id, updatedTodo) {</code><br>
-                                <code class="code-line tabbed">todos.splice(id, 1, updatedTodo);</code><br>
-                                <code class="code-line">};</code>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="step">
-                        <p class="direction">Export the update method</p>
-                        <div class="code">
-                            <p class="location">In models/todo.js: </p>
-                            <div class="code-section">
-                                <code class="code-line">module.exports = {</code><br>
-                                <code class="code-line tabbed">...</code><br>
-                                <code class="code-line tabbed">updateOne</code><br>
                                 <code class="code-line">};</code>
                             </div>
                         </div>
