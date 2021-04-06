@@ -158,54 +158,115 @@
             </li>
             
             <li class="section">
-                <p class="section-direction">Set up the "database"</p>
+                <p class="section-direction">Connect to MongoDB and include Mongoose</p>
                 <ol>
                     <li class="step">
-                        <p class="direction">Create a file to act as the "database"</p>
+                        <p class="direction">Install Mongoose</p>
                         <div class="code">
                             <p class="location">In terminal: </p>
                             <div class="code-section">
+                                <code class="code-line">npm i mongoose</code>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="step">
+                        <p class="direction">Configure Mongoose in a module</p>
+                        <div class="code">
+                            <p class="location">In terminal: </p>
+                            <div class="code-section">
+                                <code class="code-line">mkdir config</code><br>
+                                <code class="code-line">touch config/database.js</code>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="step">
+                        <p class="direction">Connect to a database</p>
+                        <div class="code">
+                            <p class="location">In database.js: </p>
+                            <div class="code-section">
+                                <code class="code-line">const mongoose = require('mongoose');</code><br>
+                                <code class="code-line">mongoose.connect('mongodb+srv://&lt;username>:&lt;password>@&lt;cluster>.mongodb.net/</code><br>
+                                <code class="code-line">&lt;database>?retryWrites=true&w=majority', {</code><br>
+                                <code class="code-line tabbed">useNewUrlParser: true,</code><br>
+                                <code class="code-line tabbed">useCreateIndex: true,</code><br>
+                                <code class="code-line tabbed">useUnifiedTopology: true</code><br>
+                                <code class="code-line">});</code>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="step">
+                        <p class="direction">Create a shortcut to mongoose connection object</p>
+                        <div class="code">
+                            <p class="location">In database.js: </p>
+                            <div class="code-section">
+                                <code class="code-line">const db = mongoose.connection;</code>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="step">
+                        <p class="direction">Add event listener</p>
+                        <div class="code">
+                            <p class="location">In models/todo.js: </p>
+                            <div class="code-section">
+                                <code class="code-line">db.on('connected', function() {</code><br>
+                                <code class="code-line tabbed">console.log(`Connected to MongoDB at ${db.host}:${db.port}`);</code><br>
+                                <code class="code-line">});</code>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="step">
+                        <p class="direction">Require database in server</p>
+                        <div class="code">
+                            <p class="location">In server.js: </p>
+                            <div class="code-section">
+                                <code class="code-line">require('./config/database');</code>
+                            </div>
+                        </div>
+                    </li>
+                </ol>
+            </li>
+            
+            <li class="section">
+                <p class="section-direction">Define Mongoose Schema</p>
+                <ol>
+                    <li class="step">
+                        <p class="direction">Create a module for the Schema/Model</p>
+                        <div class="code">
+                            <p class="location">In terminal: </p>
+                            <div class="code-section">
+                                <code class="code-line">mkdir models</code>
                                 <code class="code-line">touch models/todo.js</code>
-                                <p class="note">*Note: The file is written as singular by convention</p>
                             </div>
                         </div>
                     </li>
                     <li class="step">
-                        <p class="direction">Create an array of todo objects</p>
+                        <p class="direction">Require Mongoose</p>
                         <div class="code">
-                            <p class="location">In models/todo.js: </p>
+                            <p class="location">In todo.js: </p>
                             <div class="code-section">
-                                <code class="code-line">const todos = [</code><br>
-                                <code class="code-line tabbed">{text: 'Feed Dogs', done: true},</code><br>
-                                <code class="code-line tabbed">{text: 'Learn Express', done: false},</code><br>
-                                <code class="code-line tabbed">{text: 'Buy Milk', done: false}</code><br>
-                                <code class="code-line">];</code>
+                                <code class="code-line">const mongoose = require('mongoose');</code>
+                                <code class="code-line">const Schema = mongoose.Schema;</code>
                             </div>
                         </div>
                     </li>
                     <li class="step">
-                        <p class="direction">Create methods to access one or all todo objects</p>
+                        <p class="direction">Define a basic Schema </p>
                         <div class="code">
-                            <p class="location">In models/todo.js: </p>
+                            <p class="location">In todo.js: </p>
                             <div class="code-section">
-                                <code class="code-line">function getAll() {</code><br>
-                                <code class="code-line tabbed">return todos;</code><br>
-                                <code class="code-line">};</code><br>
-                                <code class="code-line">function getOne(id) {</code><br>
-                                <code class="code-line tabbed">return todos[id];</code><br>
-                                <code class="code-line">};</code>
+                                <code class="code-line">const todoSchema = new Schema({</code>
+                                <code class="code-line tabbed">text: String,</code>
+                                <code class="code-line tabbed">done: Boolean</code>
+                                <code class="code-line">});</code>
                             </div>
                         </div>
                     </li>
                     <li class="step">
-                        <p class="direction">Export the methods</p>
+                        <p class="direction">Compile into a Model</p>
                         <div class="code">
-                            <p class="location">In models/todo.js: </p>
+                            <p class="location">In todo.js: </p>
                             <div class="code-section">
-                                <code class="code-line">module.exports = {</code><br>
-                                <code class="code-line tabbed">getAll,</code><br>
-                                <code class="code-line tabbed">getOne,</code><br>
-                                <code class="code-line">};</code>
+                                <code class="code-line">module.exports = mongoose.model('Todo', todoSchema);</code>
                             </div>
                         </div>
                     </li>
